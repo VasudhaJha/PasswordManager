@@ -1,21 +1,23 @@
+import os
 import boto3
-from constants import *
 
+table_name = os.environ.get('USER_TABLE_NAME')
+partition_key = os.environ.get('USER_TABLE_KEY')
 dynamodb = boto3.resource('dynamodb')
 
 def create_table():
     
     dynamodb.create_table(
-        TableName=USER_TABLE_NAME,
+        TableName=table_name,
         KeySchema=[
             {
-                'AttributeName': USER_TABLE_KEY,
+                'AttributeName': partition_key,
                 'KeyType': 'HASH'
             }
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': USER_TABLE_KEY,
+                'AttributeName': partition_key,
                 'AttributeType': 'S'
             }
         ],
@@ -26,7 +28,7 @@ def create_table():
     )
 
 def delete_table():
-    table = dynamodb.Table(USER_TABLE_NAME)
+    table = dynamodb.Table(table_name)
     table.delete_table()
 
 if __name__ == "__main__":

@@ -1,5 +1,3 @@
-USER_TABLE_NAME = "User"
-USER_TABLE_KEY = "email_id"
 CREDENTIALS_TABLE_NAME = "Credentials"
 CREDENTIALS_TABLE_KEY = "email_id"
 
