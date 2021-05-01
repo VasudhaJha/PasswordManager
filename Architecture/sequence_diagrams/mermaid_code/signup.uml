@@ -1,0 +1,33 @@
+sequenceDiagram
+
+participant client as Client
+participant apigw as API Gateway
+participant user as User Service
+participant users as User Table
+participant login as Login Service
+participant credentials as Credentials Table
+
+    client->>+apigw: POST /signup<br/>{firstname, lastname,<br/>emailID, password}
+    apigw->>+user: POST /signup<br/>{firstname, lastname,<br/>emailID, password}
+    user->>+users: add new record
+    users-->>-user: response
+    alt Response was a failure
+        user-->>apigw: 500
+        apigw-->>client: 500
+    else Response was a success
+        user->>+login: POST /addCredentials<br/>{emailID, password}
+        login->>+credentials: add new record
+        credentials-->>-login: response
+
+        alt Response was a failure
+            login-->>-user: 500
+            user->>+users: delete record<br/>for emailId
+            users-->>-user: success
+            user-->>-apigw: 500
+            apigw-->>-client: 500
+        else Response was a success
+            login-->>user: 201 Created
+            user-->>apigw: 201 Created
+            apigw-->>client: 201 Created
+        end
+    end

@@ -1,0 +1,19 @@
+sequenceDiagram
+
+participant client as Client
+participant apigw as API Gateway
+participant login as Login Service
+participant credentials as Credentials Table
+
+    client->>+apigw: POST /login {username, password}
+    apigw->>+login: POST /login {username, password}
+    login->>+credentials: Get data for username
+    credentials-->>-login: data
+
+    alt Is hash match
+        login-->>apigw: 200, JWT
+        apigw-->>client: 200, JWT
+    else
+        login-->>-apigw: 401
+        apigw-->>-client: 401
+    end
