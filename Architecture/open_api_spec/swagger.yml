@@ -1,0 +1,55 @@
+swagger: "2.0"
+info:
+  description: "This is a Password Manager server."
+  version: "1.0.0"
+  title: "Password Manager"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "reachvasudha27@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "passwordmanager.swagger.io"
+basePath: "/v1"
+tags:
+- name: "Users"
+  description: "Everything about Users"
+schemes:
+- "https"
+- "http"
+paths:
+  /users:
+    put:
+      tags:
+      - "Users"
+      summary: "Add a new user"
+      description: ""
+      operationId: "addUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "user"
+        description: "User object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "User added successfully"
+        "400":
+          description: "Invalid request body"
+definitions:
+  User:
+    type: "object"
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
