@@ -19,7 +19,7 @@ schemes:
 - "http"
 paths:
   /users:
-    put:
+    post:
       tags:
       - "Users"
       summary: "Add a new user"
@@ -41,6 +41,80 @@ paths:
           description: "User added successfully"
         "400":
           description: "Invalid request body"
+  /login:
+    post:
+      tags:
+      - "Login"
+      summary: "Verify credentials to sign in an existing user"
+      description: ""
+      operationId: "verifyUserCredentials"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "credentials"
+        description: "email and password that need to be verified"
+        required: true
+        schema:
+          $ref: "#/definitions/Credentials"
+      responses:
+        "200":
+          description: "User authenticated"
+        "401":
+          description: "Incorrect password"
+        "404":
+          description: "User does not exist"
+  /users/{email}:
+    delete:
+      tags:
+      - "Users"
+      summary: "Delete an existing user"
+      description: ""
+      operationId: "deleteUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "email"
+        description: "email to find the user to be deleted"
+        required: true
+        type: "string"
+      responses:
+        "204":
+          description: "User deleted"
+    patch:
+      tags:
+      - "Users"
+      summary: "Update an existing user's password"
+      description: ""
+      operationId: "updateUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "email"
+        description: "user's email for which password is to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "User Data"
+        description: "User's data to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/UserUpdate"
+      responses:
+        "200":
+          description: "user updated"
+        "400":
+          description: "invalid request"
+        "404":
+          description: "user does not exist"
 definitions:
   User:
     type: "object"
@@ -50,6 +124,22 @@ definitions:
       lastName:
         type: "string"
       email:
+        type: "string"
+      password:
+        type: "string"
+  Credentials:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
+  UserUpdate:
+    type: "object"
+    properties:
+      firstName:
+        type: "string"
+      lastName:
         type: "string"
       password:
         type: "string"
