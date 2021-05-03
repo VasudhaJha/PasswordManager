@@ -7,4 +7,4 @@ RUN yum install -y amazon-linux-extras && \
     amazon-linux-extras enable python3.8 && \
     yum install -y python3.8 zip && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
-CMD ./package-lambda.sh login ./login
+CMD ./package-lambda.sh signup ./signup
