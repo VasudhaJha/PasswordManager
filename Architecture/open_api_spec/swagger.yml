@@ -119,9 +119,9 @@ definitions:
   User:
     type: "object"
     properties:
-      firstName:
+      first_name:
         type: "string"
-      lastName:
+      last_name:
         type: "string"
       email:
         type: "string"
@@ -137,9 +137,9 @@ definitions:
   UserUpdate:
     type: "object"
     properties:
-      firstName:
+      first_name:
         type: "string"
-      lastName:
+      last_name:
         type: "string"
       password:
         type: "string"
