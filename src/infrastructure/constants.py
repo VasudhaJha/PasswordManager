@@ -1,3 +1,0 @@
-CREDENTIALS_TABLE_NAME = "Credentials"
-CREDENTIALS_TABLE_KEY = "email_id"
-
