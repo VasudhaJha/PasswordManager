@@ -4,8 +4,8 @@
 
 - [x] Sign up new user
 - [x] Login user
-- [ ] Delete user (when user deactivates account)
-- [ ] update user
+- [x] Delete user (when user deactivates account)
+- [x] update user
 - [ ] add username, password and description for a site
 - [ ] list all sites
 - [ ] get a site
