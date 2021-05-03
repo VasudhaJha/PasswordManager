@@ -11,8 +11,8 @@ cred_table_partition_key = os.environ.get('CRED_TABLE_KEY')
 
 def _generate_hashed_password(password):
     salt = bcrypt.gensalt()
-    hashed = bcrypt.hashpw(password, salt)
-    return hashed
+    hashed = bcrypt.hashpw(password.encode('utf-8'), salt)
+    return hashed.decode('utf-8')
 
 def _add_credential(email, password):
     hashed = _generate_hashed_password(password)
@@ -49,4 +49,3 @@ def lambda_handler(event, context):
             "Content-Type": "application/json"
         }
     }
-
