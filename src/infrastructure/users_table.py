@@ -27,10 +27,6 @@ def create_table():
         }
     )
 
-def delete_table():
-    table = dynamodb.Table(table_name)
-    table.delete_table()
-
 if __name__ == "__main__":
     create_table()
     

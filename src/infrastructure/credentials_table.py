@@ -1,21 +1,23 @@
+import os
 import boto3
-from constants import *
 
 dynamodb = boto3.resource('dynamodb')
+cred_table = os.environ.get('CRED_TABLE_NAME')
+cred_table_partition_key = os.environ.get('CRED_TABLE_KEY')
 
 def create_table():
     
     dynamodb.create_table(
-        TableName=CREDENTIALS_TABLE_NAME,
+        TableName=cred_table,
         KeySchema=[
             {
-                'AttributeName': CREDENTIALS_TABLE_KEY,
+                'AttributeName': cred_table_partition_key,
                 'KeyType': 'HASH'
             }
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': CREDENTIALS_TABLE_KEY,
+                'AttributeName': cred_table_partition_key,
                 'AttributeType': 'S'
             }
         ],
@@ -24,10 +26,6 @@ def create_table():
             'WriteCapacityUnits': 5
         }
     )
-
-def delete_table():
-    table = dynamodb.Table(CREDENTIALS_TABLE_NAME)
-    table.delete_table()
 
 if __name__ == "__main__":
     create_table()
