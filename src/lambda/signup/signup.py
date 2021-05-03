@@ -35,8 +35,8 @@ def _add_user(email, first_name, last_name):
 
 def lambda_handler(event, context): 
     request_body = json.loads(event['body'])
-    first_name = request_body['firstName']
-    last_name = request_body['lastName']
+    first_name = request_body['first_name']
+    last_name = request_body['last_name']
     email = request_body['email']
     password = request_body['password']
 
