@@ -9,6 +9,11 @@
 - [x] create a vault item
 - [x] list all vault items
 - [x] get a vault item
-- [ ] update a vault item
 - [x] delete a vault item
+- [ ] update a vault item
+- [ ] Add authorization
+- [ ] Add features to README
 
+## Swagger Spec
+
+[Swagger Spec](./Architecture/open_api_spec/swagger.yml)
