@@ -6,9 +6,9 @@
 - [x] Login user
 - [x] Delete user (when user deactivates account)
 - [x] update user
-- [ ] add username, password and description for a site
-- [ ] list all sites
-- [ ] get a site
-- [ ] update a site
-- [ ] delete a site
+- [x] create a vault item
+- [x] list all vault items
+- [x] get a vault item
+- [ ] update a vault item
+- [x] delete a vault item
 
