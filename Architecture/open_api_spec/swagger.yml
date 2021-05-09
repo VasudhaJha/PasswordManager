@@ -91,7 +91,7 @@ paths:
     patch:
       tags:
       - "Users"
-      summary: "Update an existing user's password"
+      summary: "Update an existing user's password or name"
       description: ""
       operationId: "updateUser"
       consumes:
@@ -194,7 +194,7 @@ paths:
         "200":
           description: "Found Vault Item"
           schema:
-            $ref: '#/definitions/VaultItem'
+            $ref: '#/definitions/UpdateVaultItem'
         "404":
           description: "Vault Item not found"
     patch:
@@ -226,7 +226,9 @@ paths:
           $ref: "#/definitions/UpdateVaultItem"
       responses:
         "200":
-          description: "Found Vault Item"
+          description: "Updated Vault Item"
+          schema:
+            $ref: '#/definitions/UpdateVaultItem'
         "404":
           description: "Vault Item not found"
     delete:
