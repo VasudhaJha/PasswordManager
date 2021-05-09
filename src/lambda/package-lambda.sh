@@ -1,7 +1,7 @@
 #!/bin/bash
 # Creates zip archive of a lambda to be uploaded to s3, returns the path to the file
 # Usage: ./package-lambda.sh LAMBDA_NAME SOURCE_PATH
-# Ex. ./package-lambda.sh signup ./signup
+# Ex. ./package-lambda.sh signup ./user/signup
 
 if [[ $# -ne 2 ]]
 then

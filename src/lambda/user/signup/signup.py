@@ -24,7 +24,6 @@ def _add_credential(email, password):
     )
 
 def _add_user(email, first_name, last_name):
-    print(f"Adding user with email: {email}, first name: {first_name}, last name: {last_name}")
     user_table.put_item(
         Item={
             user_table_partition_key : email,
