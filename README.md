@@ -10,8 +10,8 @@
 - [x] list all vault items
 - [x] get a vault item
 - [x] delete a vault item
-- [ ] update a vault item
-- [ ] Add authorization
+- [x] update a vault item
+- [x] Add authorization (using API Key)
 - [ ] Add features to README
 
 ## Swagger Spec
