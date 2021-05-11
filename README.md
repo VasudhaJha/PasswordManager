@@ -13,6 +13,7 @@
 - [x] update a vault item
 - [x] Add authorization (using API Key)
 - [ ] Add features to README
+- [ ] Update Architecture diagrams
 
 ## Swagger Spec
 
