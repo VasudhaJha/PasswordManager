@@ -1,8 +1,8 @@
 # docker build -t package-lambda .
 # docker run --rm -it -v /tmp:/tmp package-lambda
 FROM amazonlinux
-ENV lambdaName getVaultItems
-ENV lambdaDirectory ./vault/getVaultItems
+ENV lambdaName updateVaultItem
+ENV lambdaDirectory ./vault/updateVaultItem
 WORKDIR /package
 COPY . .
 RUN yum install -y amazon-linux-extras && \
